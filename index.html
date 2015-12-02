@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test css load</title>
+	<style>
+	#resize {
+		width: 100px;
+		height: 100px;
+		background: red;
+	}
+	</style>
+	<script src="/static/js/load.css2.js"></script>
+</head>
+<body>
+	<textarea id="resize">
+		
+	</textarea> 
+	<input onclick="loadCssFile()" type="button" value="load css">
+	<script>
+		function loadCssFile() {
+			loadCSS('/static/css/a.css', null, 'all', function  (e) {
+				console.log(+new Date, 'loaded')
+			}, function  (e) {
+				console.log(+new Date, 'done', e)
+			});
+		};
+		document.getElementById('resize').onresize =function  (e) {
+			console.log(+new Date, 'resize')
+		};
+	</script>
+</body>
+</html>
